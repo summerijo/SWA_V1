@@ -1,0 +1,50 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+}
+
+h1 {
+    text-align: center;
+}
+h1.display-4.fw-bold {
+    text-align: center;
+}
+
+p {
+    margin-bottom: 30px;
+    text-align: center;
+
+}
+
+.btn-dark {
+    background-color: black;
+    border: none;
+}
+
+.img-fluid {
+    max-width: 100%; 
+}
+
+.rounded {
+    border-radius: 40px !important;
+}
+
+input#email, input#password {
+    border: 1px solid black;
+}
+
+.register-btn {
+    color: black;
+}
+
+.login-btn, .register-btn {
+    font-weight: bold;
+}
+
+.text-greet, #register{
+    color: black;
+}
+a {
+    text-decoration: none;
+}

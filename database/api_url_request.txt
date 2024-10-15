@@ -1,0 +1,14 @@
+# Create user
+http://127.0.0.1:5000/api/create_user?username=bini143&email=bloom@example.com&password=jhoanna
+
+# Read All Users
+http://127.0.0.1:5000/api/users
+
+# Read Specific User using ID
+http://127.0.0.1:5000/api/users/1
+
+# Update an Existing User
+http://127.0.0.1:5000/api/update_user?id=1&username=hev&email=abi@example.com&password=123
+
+# Delete User using ID
+http://127.0.0.1:5000/api/delete_user?id=5

@@ -1,0 +1,41 @@
+.register-container {
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    width: 600px; 
+    font-family: Arial, Helvetica, sans-serif;
+    height: 88%;
+    border: 1px solid black;
+}
+
+h2 {
+    font-weight: bold;
+}
+
+.btn-dark {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.login-link {
+    font-weight: bold;
+    color: #000;
+    text-decoration: none;
+}
+
+.login-link:hover {
+    color: #007bff;
+}
+
+.bg-primary {
+    background-color: 266CA8; 
+}
+.form-control {
+    border: 1px solid black;
+    border-radius: 13px;
+    height: 40px;
+}
+button.btn.btn-dark.btn-block {
+    width: 90%;
+    border-radius: 9px;
+}
