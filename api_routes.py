@@ -1,5 +1,4 @@
 from flask import Blueprint, jsonify, request
-from werkzeug.security import generate_password_hash, check_password_hash
 import mysql.connector
 
 # Create a Blueprint for API routes
@@ -23,9 +22,7 @@ def create_user():
 
     if not username or not email or not password:
         return jsonify({"error": "Username, Email, and Password are required"}), 400
-    
-    # Hash the password before storing it
-    hashed_password = generate_password_hash(password)
+
 
     conn = connect_db()
     cursor = conn.cursor()
@@ -33,7 +30,7 @@ def create_user():
     # Insert user into the database
     # Insert user into the database with hashed password
     cursor.execute("INSERT INTO users (username, email, password) VALUES (%s, %s, %s)", 
-                   (username, email, hashed_password))
+                   (username, email, password))
     conn.commit()
 
     # Get the ID of the newly inserted user
@@ -87,15 +84,12 @@ def update_user():
 
     if not user_id or not username or not email or not password:
         return jsonify({"error": "ID, Username, Email, and Password are required"}), 400
-    
-    # Hash the password before storing it
-    hashed_password = generate_password_hash(password)
 
     conn = connect_db()
     cursor = conn.cursor()
 
     # Update user in the database
-    cursor.execute("UPDATE users SET username = %s, email = %s, password = %s WHERE id = %s", (username, email, hashed_password, user_id))
+    cursor.execute("UPDATE users SET username = %s, email = %s, password = %s WHERE id = %s", (username, email, password, user_id))
     conn.commit()
 
     cursor.close()
