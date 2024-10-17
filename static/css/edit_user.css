@@ -8,7 +8,7 @@
     padding: 0;
     padding: 25px 47px !important;
 }
-h2 {
+h1 {
     font-weight: bold;
 }
 
@@ -39,7 +39,10 @@ button.btn.btn-dark.btn-block {
     width: 90%;
     border-radius: 9px;
 }
-
+a {
+    text-decoration: none;
+    color: white;
+}
 
 @media (max-width: 768px) {
     .p-5 {
