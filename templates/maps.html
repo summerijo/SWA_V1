@@ -3,12 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maps</title>
+    <title>Swell Wave App</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/maps.css">
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <h1>Welcome to the Maps Page, {{ username }}!</h1>
-    <p>You have successfully logged in.</p>
-    <br>
-    <a href="/logout">Logout</a>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-7 p-0">
+                <div id="map"></div>
+            </div>
+            <div class="col-md-5 data-container bg-light">
+                <a href="/logout">Logout</a>
+                <h3>Location Information</h3>
+                <div id="locationInfo" class="mb-3">
+                    Latitude: <span id="locationLat">N/A</span><br>
+                    Longitude: <span id="locationLng">N/A</span>
+                </div>
+                <h3>Current Swell Data</h3>
+                <table id="swellDataTable" class="table table-sm table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Swell Wave Height (m)</td>
+                            <td id="swellHeight">N/A</td>
+                        </tr>
+                        <tr>
+                            <td>Timestamp</td>
+                            <td id="swellTimestamp">N/A</td>
+                        </tr>
+                        <tr>
+                            <td>Swell Wave Direction</td>
+                            <td id="swellDirection">N/A</td>
+                        </tr>
+                        <tr>
+                            <td>Swell Wave Period</td>
+                            <td id="swellPeriod">N/A</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="chart-container">
+                    <h3>Hourly Swell Data</h3>
+                    <canvas id="hourlySwellChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery, Popper.js, and Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="../static/js/script.js"></script>
 </body>
 </html>
