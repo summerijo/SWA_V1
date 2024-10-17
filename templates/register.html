@@ -11,6 +11,19 @@
   <div class="d-flex justify-content-center align-items-center vh-100 bg-primary">
     <div class="container register-container p-5">
       <h2 class="mb-4">Register</h2>
+
+      <!-- Display flashed success message if it exists -->
+      {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+              {% for category, message in messages %}
+              <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                  {{ message }}
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+              {% endfor %}
+          {% endif %}
+      {% endwith %}
+
       <form action="/register" method="POST">
         <!-- Name Inputs -->
         <div class="row">

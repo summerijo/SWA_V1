@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, session, jsonify
+from flask import Flask, render_template, request, redirect, url_for, session, jsonify, flash, get_flashed_messages
 import mysql.connector
 from api_routes import api
 
@@ -40,7 +40,10 @@ def register_user():
             query = "INSERT INTO users (f_name, l_name, email, username, password, contact_number) VALUES (%s, %s, %s, %s, %s, %s)"
             cursor.execute(query, (fname, lname, email, username, password, contact))
             conn.commit()
-            return redirect(url_for('list_users'))
+
+            # Flash a success message and render the same page
+            flash('You have successfully registered. Please log in.', 'success')
+            return render_template('register.html')
         
         except mysql.connector.Error as err:
             return jsonify({'error': str(err)})
@@ -105,28 +108,37 @@ def delete_user(id):
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    error = None  # Initialize an error message variable
     if request.method == 'POST':
         email = request.form['email']
         password = request.form['password']
 
         conn = get_db_connection()
         cursor = conn.cursor(dictionary=True)
-        
-        # Query to find the user by email
-        query = "SELECT * FROM users WHERE email = %s"
-        cursor.execute(query, (email,))
-        user = cursor.fetchone()
-        
-        cursor.close()
-        conn.close()
 
-        # If user exists and the password matches
-        if user and user['password'] == password:
-            session['email'] = email  # Store email in session
-            return redirect(url_for('maps'))  # Redirect to maps.html on successful login
-        else:
-            return 'Invalid credentials, please try again.'  # Invalid credentials
-    return render_template('login.html')
+        try:
+            # Query to find the user by email
+            query = "SELECT * FROM users WHERE email = %s"
+            cursor.execute(query, (email,))
+            user = cursor.fetchone()
+
+            # If user exists and the password matches
+            if user and user['password'] == password:
+                session['email'] = email 
+                return redirect(url_for('maps'))
+            else:
+                error = 'Invalid credentials, please try again.'
+                
+        except mysql.connector.Error as err:
+            error = f"Database error: {err}"
+
+        finally:
+            # Ensure any unread results are handled before closing
+            cursor.fetchall()  # Clear any potential remaining results
+            cursor.close()
+            conn.close()
+
+    return render_template('login.html', error=error)
 
 
 # Logout Route
@@ -141,7 +153,7 @@ def maps():
     if 'email' in session:  # Check if user is logged in
         return render_template('maps.html', email=session['email'])
     else:
-        return redirect(url_for('login'))  # Redirect to login if not logged in
+        return redirect(url_for('login'))
 
 if __name__ == '__main__':
     app.run(debug=True)

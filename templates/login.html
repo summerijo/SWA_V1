@@ -16,6 +16,13 @@
                 <h1 class="display-4 fw-bold">Welcome</h1>
                 <p class="text-greet">We are glad to see you back with us</p>
                 
+                <!-- Display error message if it exists -->
+                {% if error %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+                {% endif %}
+                
                 <form action="/login" method="POST">
                     <!-- Email Address -->
                     <div class="mb-3">
