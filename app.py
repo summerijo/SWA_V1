@@ -13,7 +13,7 @@ db_config = {
     'host': 'localhost',
     'user': 'root',      
     'password': 'root_123',
-    'database': 'swa_v1'
+    'database': 'swa_db'
 }
 
 # Helper function to connect to the database
@@ -25,16 +25,20 @@ def get_db_connection():
 @app.route('/register', methods=['GET', 'POST'])
 def register_user():
     if request.method == 'POST':
+        fname = request.form['firstName']
+        lname = request.form['lastName']
+        email = request.form['email']
         username = request.form['username']
         password = request.form['password']
-        email = request.form['email']
+        contact = request.form['contact']
+        
 
         conn = get_db_connection()
         cursor = conn.cursor()
 
         try:
-            query = "INSERT INTO users (username, password, email) VALUES (%s, %s, %s)"
-            cursor.execute(query, (username, password, email))
+            query = "INSERT INTO users (f_name, l_name, email, username, password, contact_number) VALUES (%s, %s, %s, %s, %s, %s)"
+            cursor.execute(query, (fname, lname, email, username, password, contact))
             conn.commit()
             return redirect(url_for('list_users'))
         
@@ -44,7 +48,7 @@ def register_user():
         finally:
             cursor.close()
             conn.close()
-    return render_template('register1.html')
+    return render_template('register.html')
 
 # READ Operation (List all users)
 @app.route('/users')
@@ -62,17 +66,26 @@ def list_users():
 def edit_user(id):
     conn = get_db_connection()
     cursor = conn.cursor(dictionary=True)
+
     if request.method == 'POST':
-        username = request.form['username']
+        fname = request.form['firstName']
+        lname = request.form['lastName']
         email = request.form['email']
-        query = "UPDATE users SET username = %s, email = %s WHERE id = %s"
-        cursor.execute(query, (username, email, id))
+        username = request.form['username']
+        password = request.form['password']
+        contact = request.form['contact']
+
+        query = "UPDATE users SET f_name = %s, l_name = %s, email = %s, username = %s, password = %s, contact_number = %s WHERE user_id = %s"
+        cursor.execute(query, (fname, lname, email, username, password, contact, id))
+
         conn.commit()
         cursor.close()
         conn.close()
+
         return redirect(url_for('list_users'))
+
     else:
-        cursor.execute("SELECT * FROM users WHERE id = %s", (id,))
+        cursor.execute("SELECT * FROM users WHERE user_id = %s", (id,))
         user = cursor.fetchone()
         cursor.close()
         conn.close()
@@ -83,7 +96,7 @@ def edit_user(id):
 def delete_user(id):
     conn = get_db_connection()
     cursor = conn.cursor()
-    cursor.execute("DELETE FROM users WHERE id = %s", (id,))
+    cursor.execute("DELETE FROM users WHERE user_id = %s", (id,))
     conn.commit()
     cursor.close()
     conn.close()
@@ -113,7 +126,7 @@ def login():
             return redirect(url_for('maps'))  # Redirect to maps.html on successful login
         else:
             return 'Invalid credentials, please try again.'  # Invalid credentials
-    return render_template('login1.html')
+    return render_template('login.html')
 
 
 # Logout Route

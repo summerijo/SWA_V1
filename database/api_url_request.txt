@@ -1,5 +1,5 @@
 # Create user
-http://127.0.0.1:5000/api/create_user?username=bini143&email=bloom@example.com&password=jhoanna
+http://127.0.0.1:5000/api/create_user?fname=Jhoanna&lname=Robles&email=jr@swell.com&username=masterjho&password=bini&contact=09123654789
 
 # Read All Users
 http://127.0.0.1:5000/api/users
@@ -8,7 +8,7 @@ http://127.0.0.1:5000/api/users
 http://127.0.0.1:5000/api/users/1
 
 # Update an Existing User
-http://127.0.0.1:5000/api/update_user?id=1&username=hev&email=abi@example.com&password=123
+http://127.0.0.1:5000/api/update_user?user_id=2&fname=hev&lname=abi&username=hev&email=abi@example.com&password=123&contact=09512547896
 
 # Delete User using ID
-http://127.0.0.1:5000/api/delete_user?id=5
+http://127.0.0.1:5000/api/delete_user?user_id=2

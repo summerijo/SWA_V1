@@ -7,6 +7,7 @@ html, body {
 h1 {
     text-align: center;
 }
+
 h1.display-4.fw-bold {
     text-align: center;
 }
@@ -14,7 +15,6 @@ h1.display-4.fw-bold {
 p {
     margin-bottom: 30px;
     text-align: center;
-
 }
 
 .btn-dark {
@@ -42,9 +42,63 @@ input#email, input#password {
     font-weight: bold;
 }
 
-.text-greet, #register{
+.text-greet, #register {
     color: black;
 }
+
 a {
     text-decoration: none;
 }
+
+/* Flexbox container for responsiveness */
+.container {
+    display: flex;
+    justify-content: center; /* Centers the containers horizontally */
+    align-items: center; /* Centers the containers vertically */
+    height: 100vh; /* Full viewport height */
+    flex-wrap: nowrap; /* Prevent wrapping */
+}
+
+/* Styles for the two side-by-side columns */
+.container .col-md-6 {
+    flex: 0 0 40%; /* Adjust the width to 40% of the container */
+    max-width: 40%; /* Reduce the maximum width */
+    height: 80vh; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    padding: 20px; 
+}
+
+.col-md-6.d-flex.justify-content-center.align-items-center {
+    background-color: #266ca8;
+    border-radius: 47px;
+    padding: 40px 28px; 
+}
+.w-75 {
+    width: 75% !important;
+    height: 90%;
+}
+
+
+@media (max-width: 768px) {
+    .login-image {
+        display: none !important; 
+    }
+    /* .container-fluid {
+        display: block; 
+    } */
+    .p-5 {
+        padding: 0rem !important;
+    }
+    body {
+        background-color: #266ca8;
+    }
+    .text-greet, #register,h1,label {
+        color: white;
+    }
+    
+
+
+}
+
