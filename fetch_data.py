@@ -4,7 +4,7 @@ from mysql.connector import Error
 from datetime import datetime
 
 def get_swell_data(latitude, longitude):
-    url = f'https://barmmdrr.com/connect/gmarine_api?latitude={latitude}&longitude={longitude}&hourly=swell_wave_height,swell_wave_direction,swell_wave_period,swell_wave_peak_period'
+    url = f'https://barmmdrr.com/connect/gmarine_api?latitude={latitude}&longitude={longitude}&hourly=swell_wave_height,swell_wave_direction,swell_wave_period,swell_wave_peak_period&current=swell_wave_height,swell_wave_direction,swell_wave_period,swell_wave_peak_period'
     response = requests.get(url)
 
     if response.status_code == 200:
