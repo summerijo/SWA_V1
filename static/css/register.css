@@ -1,80 +1,49 @@
-.register-container {
-    background-color: #fff;
-    border-radius: 20px;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
-    width: 600px;
-    font-family: Arial, Helvetica, sans-serif;
-    border: 1px solid black;
-    padding: 0;
-    padding: 15px 37px !important;
-}
-h2 {
-    font-weight: bold;
-}
+    body {
+        background-color: #e6f1fc;
+        font-family: 'Poppins', Helvetica, Arial, sans-serif;
 
-.btn-dark {
-    font-size: 16px;
-    font-weight: bold;
-}
-
-.login-link {
-    font-weight: bold;
-    color: #000;
-    text-decoration: none;
-}
-
-.login-link:hover {
-    color: #007bff;
-}
-
-.bg-primary {
-    background-color: 266CA8; 
-}
-.form-control {
-    border: 1px solid black;
-    border-radius: 13px;
-    height: 40px;
-}
-button.btn.btn-dark.btn-block {
-    width: 90%;
-    border-radius: 9px;
-}
-
-
-@media (max-width: 768px) {
-    .p-5 {
-        padding: 3rem !important;
-        /* height: 100vh; */
-        background-color: #0d6efd;
+      }
+      .register-container {
+      background-color: white;
+      border-radius: 15px;
+      padding: 40px 60px;
+      box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5);
+      max-width: 35%;
+  }
+      h2 {
+        color: #266CA8;
+        font-weight: bold;
+      }
+      .form-label {
+      /* font-weight: 500; */
+      font-size: 13px;
+      }
+      .form-control {
+      border: 1px solid;
+      }
+  
+      .btn-block {
+      width: 88%;
+      background-color: #266CA8;
+      color: white;
+      font-weight: bold;
+      /* justify-content: center; */
+      /* display: flex; */
+      margin-left: 20px;
+      }
+      .btn-block:hover {
+        background-color: #003d80;
+        color: white;
+      }
+      .login-link {
+        color: black;
+        text-decoration: none;
+        font-weight: bold;
+      }
+      .login-link:hover {
+        color: #266CA8;
+      }
+      .mt-4 {
+      margin-top: 0.5rem !important;
+      font-size: 13px;
     }
-    .register-container {
-        background-color: #fff;
-        /* border-radius: 20px; */
-        /* box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1); */
-        /* width: 600px; */
-        font-family: Arial, Helvetica, sans-serif;
-        /* border: 1px solid black; */
-        background-color: #0d6cf8;
-    }
-
-    .mb-3 {
-        margin-bottom: 0 !important;
-    }
-    .container.register-container.p-5 {
-        padding-bottom: 0 !important;
-        border: transparent;
-    }
-    button.btn.btn-dark.btn-block {
-        margin-top: 13px;
-    }
-    label.form-label {
-        margin-top: 7px;
-    }
-    .mt-4 {
-        margin-top: 0.5rem !important;
-    }
-    .mb-4 {
-        margin-top: -1.5rem !important;
-    }
-    
-}

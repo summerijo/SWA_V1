@@ -14,15 +14,17 @@ app.register_blueprint(api)
 db_config = {
     'host': 'localhost',
     'user': 'root',      
-    'password': 'root_123',
-    'database': 'swa_db'
+    'password': '12345678',
+    'database': 'swa_v1'
 }
 
 # Helper function to connect to the database
 def get_db_connection():
     conn = mysql.connector.connect(**db_config)
     return conn
-
+@app.route('/home')
+def home():
+    return render_template('home.html')
 # CREATE Operation (Register a new user)
 @app.route('/register', methods=['GET', 'POST'])
 def register_user():
@@ -157,6 +159,9 @@ def maps():
     else:
         return redirect(url_for('login'))
     
+@app.route('/animation')
+def animation():
+    return render_template('animation.html')
 
 @app.route('/get-stored-data', methods=['POST'])
 def get_stored_data():

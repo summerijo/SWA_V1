@@ -1,23 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Swell Wave App</title>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../static/css/maps.css">
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-</head>
-<body>
-    <div class="container-fluid">
+<!-- External Stylesheets -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+<link rel="stylesheet" href="{{ url_for('static', filename='css/maps.css') }}">
+
+<!-- External JavaScript Libraries -->
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+{% extends "layout.html" %}
+
+{% block title %}Home - Swell Wave App{% endblock %}
+
+
+{% block content %}
+    <div class="container-fluid content">
+
+
         <div class="row">
-            <div class="col-md-7 p-0">
-                <div id="map"></div>
-            </div>
-            <div class="col-md-5 data-container bg-light">
-                <a href="/logout">Logout</a>
+        
+
+            <div class="col-md-3 data-container bg-light">
                 <h3>Location Information</h3>
                 <div id="locationInfo" class="mb-3">
                     Latitude: <span id="locationLat">N/A</span><br>
@@ -55,13 +57,10 @@
                     <canvas id="hourlySwellChart"></canvas>
                 </div>
             </div>
+            <div class="col-md-9 p-0">
+                <div id="map"></div>
+            </div>
         </div>
     </div>
+    {% endblock %}
 
-    <!-- jQuery, Popper.js, and Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="../static/js/script.js"></script>
-</body>
-</html>

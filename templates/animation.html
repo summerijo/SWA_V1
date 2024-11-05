@@ -1,0 +1,21 @@
+<!-- External Stylesheets -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+<link rel="stylesheet" href="{{ url_for('static', filename='css/maps.css') }}">
+
+<!-- External JavaScript Libraries -->
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+{% extends "layout.html" %}
+
+{% block title %}Home - Swell Wave App{% endblock %}
+
+
+{% block content %}
+<div class="container-fluid content">
+    <div class="row">
+        <div class="col-md-12 p-0">
+            <div id="map"></div>
+        </div>
+    </div>
+</div>
+{% endblock %}

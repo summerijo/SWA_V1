@@ -1,6 +1,11 @@
+
+/* Map */
 #map {
     height: 100vh;
+    /* width: 107%; */
+    top: 57px;
 }
+
 .chart-container {
     height: 300px;
     position: relative;
@@ -8,9 +13,15 @@
 }
 .data-container {
     height: 100vh;
-    overflow-y: auto; 
-    padding: 20px; 
+    overflow-y: auto;
+    padding: 20px;
+    top: 58px;
 }
 table {
     width: 100%; 
+}
+.leaflet-touch .leaflet-control-layers, .leaflet-touch .leaflet-bar {
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    background-clip: padding-box;
+    position: fixed;
 }

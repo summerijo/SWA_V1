@@ -1,0 +1,43 @@
+
+/* Navbar */
+.fixed-top {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+}
+.navbar {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+    left: 60px;
+    height: 60px;
+}
+
+.navbar-brand {
+    font-size: 18px;
+    font-weight: bolder;
+    color: #266ca8 !important;
+}
+
+/* Sidebar */
+.sidebar {
+    max-width: 4%;
+    background-color: #266CA8; 
+    border-right: 1px solid #dee2e6;
+    height: 100vh; 
+    position: fixed;
+    z-index: 1000; 
+}
+        
+.content {
+    margin-left: 4%;
+    max-width: 96%;
+}
+
+.swell-logo{
+    padding:10px 10px 0 10px;
+}
+hr {
+    border: 1px solid white;
+    width: 80%;
+}
